@@ -4,16 +4,16 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"All tests passed!\""
+    "test": "echo \"All Tests Passed\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "aws-jwt-verify": "^3.0.0",
-    "aws-sdk": "^2.1115.0"
-  },
   "devDependencies": {
+    "serverless-add-api-key": "^4.2.1",
     "serverless-iam-roles-per-function": "^3.2.0"
+  },
+  "dependencies": {
+    "aws-jwt-verify": "^4.0.0"
   }
 }

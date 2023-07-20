@@ -1,4 +1,4 @@
-# Notes dynamodb table
+# dynamodb table
 notesTable:
   Type: AWS::DynamoDB::Table
   Properties:
@@ -17,14 +17,13 @@ cognitoUserPool:
   Properties:
     UserPoolName: MyNotesUP-${self:provider.stage}
 
-# User pool web client
-cognitoUserPoolWebclient:
+cognitoUserPoolWebClient: 
   Type: AWS::Cognito::UserPoolClient
-  Properties:
-    UserPoolId: !Ref cognitoUserPool
+  Properties: 
+    UserPoolId: !Ref cognitoUserPool   
     ClientName: web
     AllowedOAuthFlowsUserPoolClient: true
-    SupportedIdentityProviders:
+    SupportedIdentityProviders: 
       - COGNITO
     AllowedOAuthScopes:
       - phone
@@ -36,17 +35,16 @@ cognitoUserPoolWebclient:
     CallbackURLs:
       - http://localhost:3000
 
-# User pool domain
-cognitoUserPoolDoamin:
+cognitoUserPoolDomain:
   Type: AWS::Cognito::UserPoolDomain
-  Properties:
+  Properties: 
     UserPoolId: !Ref cognitoUserPool
-    Domain: mynotescd-${self:provider.stage}
+    Domain: mynotesvd-${self:provider.stage}       
 
-# Application parameters
-userPoolArnParam:
+userPoolIdParam:
   Type: AWS::SSM::Parameter
   Properties:
-    Name: /notes/${self:provider.stage}/userPoolArn
+    Name: /notes/${self:provider.stage}/userPoolId
     Type: String
-    Value: !GetAtt cognitoUserPool.Arn
+    Value: !GetAtt cognitoUserPool.Arn      
+
